@@ -1,1 +1,5 @@
-
+E001|Laptop|2.50|Recycled
+E002|Mobile Phone|0.30|Not Recycled
+E003|Television|8.00|Recycled
+E004|Keyboard|0.80|Not Recycled
+E005|Printer|5.50|Not Recycled

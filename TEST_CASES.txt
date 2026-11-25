@@ -1,1 +1,118 @@
+E-WASTE TRACKING SYSTEM - TEST PLAN
+====================================
 
+Initial sample data:
+E001|Laptop|2.50|Recycled
+E002|Mobile Phone|0.30|Not Recycled
+E003|Television|8.00|Recycled
+E004|Keyboard|0.80|Not Recycled
+E005|Printer|5.50|Not Recycled
+
+Initial expected total = 17.10 kg.
+
+TEST CASES
+
+TC01 - Calculate total weight with the original sample data
+Input: Select menu option 3.
+Expected: 5 records; total weight 17.10 kg.
+Reason: 2.50 + 0.30 + 8.00 + 0.80 + 5.50 = 17.10.
+
+TC02 - Update status from Not Recycled to Recycled
+Input: Select 1; ID E002; select 1.
+Expected: E002 status becomes Recycled in memory and ewaste.txt.
+Reason: The ID exists and option 1 represents Recycled.
+
+TC03 - Update status from Recycled to Not Recycled
+Input: Select 1; ID E001; select 2.
+Expected: E001 status becomes Not Recycled and is saved.
+Reason: The ID exists and option 2 represents Not Recycled.
+
+TC04 - Enter an ID that does not exist when updating
+Input: Select 1; ID E999.
+Expected: "Record not found"; file remains unchanged.
+Reason: No record has ID E999.
+
+TC05 - Enter a blank ID when updating
+Input: Select 1; press Enter at the ID prompt.
+Expected: Program asks again for a non-empty ID.
+Reason: Empty input is not accepted.
+
+TC06 - Enter an invalid status menu choice
+Input: At status menu enter 9, then enter 1.
+Expected: Invalid-choice message, then status is updated using 1.
+Reason: Only choices 1 and 2 are allowed.
+
+TC07 - Delete a record and confirm
+Input: Select 2; ID E004; enter Y.
+Expected: E004 is removed from memory and ewaste.txt.
+Reason: The record exists and the user confirms deletion.
+
+TC08 - Attempt deletion but cancel
+Input: Select 2; ID E005; enter N.
+Expected: E005 remains in the file.
+Reason: User declined the deletion confirmation.
+
+TC09 - Delete an unknown ID
+Input: Select 2; ID E999.
+Expected: "Record not found"; no data is removed.
+Reason: The requested record does not exist.
+
+TC10 - Invalid deletion confirmation
+Input: Select 2; ID E005; enter X, then N.
+Expected: Program rejects X and asks again; record remains.
+Reason: Only Y/y and N/n are accepted.
+
+TC11 - Invalid main menu input
+Input: Enter abc at the main menu, then enter 3.
+Expected: Invalid-choice message; program continues and calculates total.
+Reason: Menu accepts integers only.
+
+TC12 - Main menu number outside the range
+Input: Enter 8, then enter 0.
+Expected: Invalid-choice message; then program exits.
+Reason: Valid choices are 0 through 4.
+
+TC13 - Empty data file
+Input: Use an empty ewaste.txt and select option 3.
+Expected: 0 records and total weight 0.00 kg.
+Reason: There are no records to add to the total.
+
+TC14 - One-record data file
+Input: Store E100|Mouse|0.20|Not Recycled and select option 3.
+Expected: 1 record and total weight 0.20 kg.
+Reason: The total is the only record's weight.
+
+TC15 - Variable number of records
+Input: Add several valid lines to ewaste.txt and select option 3.
+Expected: Total equals the sum of all valid record weights.
+Reason: vector storage supports a changing number of records.
+
+TC16 - Corrupted or malformed data line
+Input: Add a malformed line to ewaste.txt and start the program.
+Expected: Warning is displayed; malformed line is skipped.
+Reason: The loader checks field count, weight, ID, item and status.
+
+TC17 - Invalid weight in data file
+Input: Add E200|Monitor|heavy|Recycled to ewaste.txt.
+Expected: Warning; invalid line is skipped.
+Reason: Weight must be numeric and greater than zero.
+
+TC18 - Invalid status in data file
+Input: Add E201|Tablet|1.00|Pending to ewaste.txt.
+Expected: Warning; invalid line is skipped.
+Reason: Only Recycled and Not Recycled are supported statuses.
+
+TC19 - Delete the last remaining record
+Input: Use a one-record file, delete that record and confirm.
+Expected: File becomes empty; total becomes 0.00 kg.
+Reason: Erasing the only vector element leaves an empty vector.
+
+TC20 - Exit
+Input: Select menu option 0.
+Expected: Goodbye message and normal program termination.
+Reason: 0 is the exit option.
+
+TESTING NOTE
+For each test, restore a fresh copy of the initial ewaste.txt before testing
+when the test changes or deletes records. The sample data file is modified
+permanently by successful updates and deletions.

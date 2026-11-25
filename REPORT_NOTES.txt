@@ -1,1 +1,44 @@
+REPORT NOTES - E-WASTE TRACKING SYSTEM
+=======================================
 
+Project scope:
+This individual module implements three functions in the group's E-Waste
+Tracking System: updating recycling status, deleting records, and calculating
+the total collected weight.
+
+Assumptions:
+1. Records in this module have already been collected.
+2. Every record has a unique ID.
+3. Weight is stored in kilograms and must be a positive number.
+4. Recycling status has exactly two supported values: Recycled and Not Recycled.
+5. Total collected weight includes all records, regardless of recycling status.
+6. A deleted record is permanently removed from the text file.
+7. The pipe character (|) separates fields and therefore cannot appear in IDs
+   or item names.
+8. The data file is expected to contain one record per line in this format:
+   ID|ItemName|Weight|Status
+9. The program skips malformed records and displays a warning.
+10. The independent module does not implement record creation because adding
+    records is outside this student's assigned responsibilities.
+
+Modularity:
+The system is separated into multiple .cpp files. Each function performs one
+task. main.cpp only calls runProgram(), which coordinates the menu and modules.
+
+Generic design:
+Records are stored in a vector, so the number of records is not fixed. The
+loader and saver process all records in the text file rather than relying on
+fixed array sizes.
+
+Verification:
+The supplied sample data contains five records with a total weight of 17.10 kg.
+The test plan covers normal operations, invalid input, missing IDs, empty data,
+variable record counts, malformed file contents, deletion confirmation and exit.
+
+Limitations:
+- IDs are case-sensitive.
+- The text file is plain text and is not encrypted.
+- The system assumes one user/program instance edits the file at a time.
+- The program can skip invalid lines, but it does not automatically repair them.
+- Duplicate IDs in a manually edited data file are not automatically removed;
+  the group should ensure IDs remain unique when records are created.
