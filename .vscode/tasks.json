@@ -1,34 +1,29 @@
-
 {
     "version": "2.0.0",
     "tasks": [
         {
-            "type": "cppbuild",
             "label": "Build E-Waste Project",
-            "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
+            "type": "shell",
+            "command": "g++",
             "args": [
-                "-fdiagnostics-color=always",
                 "-g",
                 "-std=c++11",
                 "-Wall",
                 "-Wextra",
-                "-Wconversion",
-                "${workspaceFolder}\\main.cpp",
-                "${workspaceFolder}\\fileHandling.cpp",
-                "${workspaceFolder}\\inputAndMenu.cpp",
-                "${workspaceFolder}\\recycling.cpp",
-                "${workspaceFolder}\\recordManagement.cpp",
-                "${workspaceFolder}\\weightCalculation.cpp",
-                "${workspaceFolder}\\program.cpp",
+                "${workspaceFolder}/main.cpp",
+                "${workspaceFolder}/fileHandling.cpp",
+                "${workspaceFolder}/inputAndMenu.cpp",
+                "${workspaceFolder}/recycling.cpp",
+                "${workspaceFolder}/recordManagement.cpp",
+                "${workspaceFolder}/weightCalculation.cpp",
+                "${workspaceFolder}/program.cpp",
                 "-o",
-                "${workspaceFolder}\\ewaste.exe"
+                "${workspaceFolder}/ewaste.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
             },
-            "problemMatcher": [
-                "$gcc"
-            ],
+            "problemMatcher": ["$gcc"],
             "group": {
                 "kind": "build",
                 "isDefault": true
