@@ -47,3 +47,6 @@ ASSUMPTIONS
 - A missing data file is treated as an empty file and is created when possible.
 - The sample data is for demonstration; users may add records by editing the text file.
 - This independent module does not include adding new records because that is outside the three assigned functions.
+
+IMPORTANT
+Make a backup copy of ewaste.txt before testing deletion if you want to retain the original sample data.

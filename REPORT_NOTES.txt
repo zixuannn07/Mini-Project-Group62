@@ -43,5 +43,3 @@ Limitations:
 - Duplicate IDs in a manually edited data file are not automatically removed;
   the group should ensure IDs remain unique when records are created.
 
-IMPORTANT
-Make a backup copy of ewaste.txt before testing deletion if you want to retain the original sample data.
